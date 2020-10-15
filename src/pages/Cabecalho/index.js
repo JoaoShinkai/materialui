@@ -7,6 +7,9 @@ import Typography from '@material-ui/core/Typography';
 import Toolbar from '@material-ui/core/Toolbar';
 import { makeStyles} from '@material-ui/core/styles';
 import { Link } from "react-router-dom";
+import { useHistory } from 'react-router-dom'
+
+
 
 const useStyles = makeStyles((theme)=> ({
     toolbarTitle: {
@@ -16,7 +19,9 @@ const useStyles = makeStyles((theme)=> ({
         justifyContent: "space-between"
     },
     toolbarLink:{
-        padding: theme.spacing(1)
+        padding: theme.spacing(1),
+        color: theme.palette.secondary.main,
+        textDecoration: 'none'
     }
 }))
 
@@ -30,6 +35,7 @@ const Cabecalho = () => {
         {titulo: 'Área Reservada', url: '/login'},
     ]
     const classes = useStyles()
+    const history = useHistory()
     return(
         <>
         <AppBar position="relative">
@@ -38,16 +44,27 @@ const Cabecalho = () => {
                 <Typography component="h1" color="inherit" align="center" noWrap className={classes.toolbarTitle}>
                     {titulo}
                 </Typography>
-                <Button variant="contained" color="secondary" size="small" href="/login">
-                    Login
-                </Button>
+                {
+                    localStorage.getItem("logado") != btoa(process.env.REACT_APP_USER) ?
+                    <Button variant="contained" color="secondary" size="small" href="/login">
+                        Login
+                    </Button>
+                    :
+                    <Button variant="contained" color="secondary" size="small"  onClick={() => {localStorage.removeItem("logado"); history.push('/login')}}>
+                        Sair
+                    </Button>
+                }
+                
             </Toolbar>
         </AppBar>
+        {localStorage.getItem("logado") != btoa(process.env.REACT_APP_USER) &&
         <Toolbar component="nav" variant="dense" className={classes.toolbarSecundaria}>
             {secoes.map((secao) => (
                 <Link color="secondary" variant="body2" noWrap key={secao.titulo} href={secao.url} className={classes.toolbarLink}> {secao.titulo} </Link>
             ))}
         </Toolbar>
+        
+        }
         </>
     )
 }

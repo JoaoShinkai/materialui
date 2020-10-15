@@ -12,7 +12,7 @@ import Rotas from './rotas.js'
 
 
 function App() {
-  const temaDark = true;
+  const temaDark = false;
   const tipoPaleta = temaDark ? 'dark' : 'light'
   const corPrimaria = temaDark ? orange[500] : blue[500]
   const corSecundaria = temaDark ? deepOrange[900] : lightBlue[400]
