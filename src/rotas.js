@@ -6,6 +6,7 @@ import NaoEncontrado from '../src/pages/NaoEncontrado/'
 import Login from '../src/pages/Login/'
 import Menu from '../src/pages/Menu/'
 import Tarefas from '../src/pages/Tarefas'
+import RotaPrivada from './rotasPrivadas'
 
 
 export default function Rotas(){
@@ -14,8 +15,8 @@ export default function Rotas(){
             <Switch>
                 <Route exact path="/" component={Inicio} />
                 <Route exact path="/login" component={Login} />
-                <Route exact path="/menu" component={Menu} />
-                <Route exact path="/tarefas" component={Tarefas} />
+                <RotaPrivada exact path="/menu" component={Menu} />
+                <RotaPrivada exact path="/tarefas" component={Tarefas} />
                 <Route component={NaoEncontrado} />
             </Switch>
         </BrowserRouter>

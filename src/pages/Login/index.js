@@ -98,6 +98,7 @@ export default function Login(){
                             label="Lembrar Usuário"
                         />
                         <Button disabled={btnDesabilitado} className={classes.button} type="submit" fullWidth variant="contained" color="primary"><LockOutlinedIcon/>Acessar</Button>
+                        <Button fullWidth variant="outlined" color="secondary" href="/">Voltar ao início</Button>
                     </form>
                 </div>
             </Paper>

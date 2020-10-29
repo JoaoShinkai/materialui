@@ -7,6 +7,7 @@ import RestoreIcon from '@material-ui/icons/Restore';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import Cabecalho from '../Cabecalho';
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles({
   root: {
@@ -28,10 +29,10 @@ export default function LabelBottomNavigation() {
 
         </Cabecalho>
         <BottomNavigation value={value} onChange={handleChange} className={classes.root}>
-        <BottomNavigationAction label="Tarefas" value="tarefas" icon={<RestoreIcon />} />
-        <BottomNavigationAction label="Favoritos" value="favoritos" icon={<FavoriteIcon />} />
-        <BottomNavigationAction label="Local" value="local" icon={<LocationOnIcon />} />
-        <BottomNavigationAction label="Documentos" value="documentos" icon={<FolderIcon />} />
+          <BottomNavigationAction label="Tarefas" value="tarefas" component={Link} to="/tarefas" icon={<RestoreIcon />} />
+          <BottomNavigationAction label="Favoritos" value="favoritos" icon={<FavoriteIcon />} />
+          <BottomNavigationAction label="Local" value="local" icon={<LocationOnIcon />} />
+          <BottomNavigationAction label="Documentos" value="documentos" icon={<FolderIcon />} />
         </BottomNavigation>
     </>
   );
